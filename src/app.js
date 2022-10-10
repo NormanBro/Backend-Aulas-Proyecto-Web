@@ -2,8 +2,8 @@ const app= require('./setting/index');
 
 const puerto=process.env.PORT || app.get("PORT");
 
-app.get('/',(res,req)=>{
-    return "Hola mundo";
+app.get('/',(req,res)=>{
+    return res.json({"Hola mundo":"Hola"})
 })
 
 app.listen(puerto,()=>{
