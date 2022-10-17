@@ -26,6 +26,28 @@ router.get(API+'GET/Users/:id', (req,res)=>{
     });
 });
 
+//Unidad
+router.get(API+'GET/Unidad',(req,res)=>{
+    let QUERRY="select * from tb_unidad;"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    })
+    
+});
+
+router.get(API+'GET/Unidad/:id',(req,res)=>{
+    let QUERRY="select * from tb_unidad where ID_Unidad='"+req.params.id+"';";
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    })
+});
+router.get(API+'GET/Unidad/User/:id',(req,res)=>{
+    let QUERRY="select * from tb_unidad where ID_Usuarios='"+req.params.id+"';";
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    })
+});
+
 //ROLES
 router.get(API+'GET/Roles',(req,res)=>{
     const QUERRY ="select * from tb_roles;";
