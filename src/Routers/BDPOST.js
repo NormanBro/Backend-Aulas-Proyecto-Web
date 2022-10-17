@@ -10,7 +10,8 @@ const router=Router();
 router.post(API+'POST/Users',(req,res)=>{
     const IDUser=Math.random() * (100000 - 0) + 0;
     const Codigo=uuid();
-    const QUERRY="INSERT INTO tb_usuarios (ID_Usuario, Nombre, ApellidoP, ApellidoM, Correo, username, Contraseña, Tema, ID_Rol, Codigo_Tutor) VALUES ('"+Math.round(IDUser)+"', '"+req.body.name+"', '"+req.body.AP+"', '"+req.body.AM+"', '"+req.body.correo+"', '"+req.body.user+"', '"+req.body.pass+"', 'Default', '"+req.body.idrol+"', '"+Codigo+"');"
+    const QUERRY="INSERT INTO tb_usuarios (`ID_Usuario`, `Nombre`, `ApellidoP`, `ApellidoM`, `Correo`, `username`, `Contraseña`, `Tema`, `ID_Rol`, `Codigo`, `Estado`) VALUES ('"+Math.round(IDUser)+"', '"+req.body.name+"', '"+req.body.AP+"', '"+req.body.AM+"', '"+req.body.correo+"', '"+req.body.user+"', '"+req.body.pass+"', 'Default', '"+req.body.idrol+"', '"+Math.round(Codigo)+"', 'activo');"
+    //const QUERRY="INSERT INTO tb_usuarios (ID_Usuario, Nombre, ApellidoP, ApellidoM, Correo, username, Contraseña, Tema, ID_Rol, Codigo_Tutor) VALUES ('"+Math.round(IDUser)+"', '"+req.body.name+"', '"+req.body.AP+"', '"+req.body.AM+"', '"+req.body.correo+"', '"+req.body.user+"', '"+req.body.pass+"', 'Default', '"+req.body.idrol+"', '"+Codigo+"');"
     
     Con.query(QUERRY,(err,row,field)=>{
         let Message={"Menssage":"Se ha registrado Correctamente"}
@@ -25,7 +26,7 @@ router.post(API+'POST/Users',(req,res)=>{
 //POST Unidad
 router.post(API+'POST/Unidad',(req,res)=>{
     const IDUnidad=Math.random() * (100000 - 0) + 0;
-    let QUERRY="INSERT INTO `school`.`tb_unidad` (`ID_Unidad`, `Nombre_Unidada`, `ID_Usuarios`) VALUES ('"+IDUnidad+"', '"+req.body.idunidad+"', '"+req.body.iduser+"');"
+    let QUERRY="INSERT INTO `tb_unidad` (`ID_Unidad`, `Nombre_Unidada`, `ID_Usuarios`) VALUES ('"+IDUnidad+"', '"+req.body.idunidad+"', '"+req.body.iduser+"');"
     Con.query(QUERRY,(err,row,field)=>{
         let Message={"Menssage":"Se ha registrado Correctamente"}
         if(err){
@@ -39,7 +40,7 @@ router.post(API+'POST/Unidad',(req,res)=>{
 //POST Salas
 router.post(API+'POST/Salas',(req,res)=>{
     const ID_SALA=Math.random() * (100000 - 0) + 0;
-    let QUERRY="INSERT INTO `school`.`tb_sala` (`ID_Sala`, `Nombre_Sala`) VALUES ('"+Math.round(ID_SALA)+"', '"+req.body.Nombre+"');"
+    let QUERRY="INSERT INTO `tb_sala` (`ID_Sala`, `Nombre_Sala`) VALUES ('"+Math.round(ID_SALA)+"', '"+req.body.Nombre+"');"
     Con.query(QUERRY,(err,row,fields)=>{
         let message={"Message":"Se ha registrado Correctamente"};
         if(err){
@@ -53,7 +54,7 @@ router.post(API+'POST/Salas',(req,res)=>{
 //POST Notificacion
 router.post(API+'POST/Notif',(req,res)=>{
     const ID_Noti=Math.random() * (100000 - 0) + 0;
-    const QUERRY="INSERT INTO `school`.`tb_notificaciones` (`ID_Notificaciones`, `ID_Usuario`, `Visto`, `Mensaje`, `Fecha`, `Hora`) VALUES ('"+Math.round(ID_Noti)+"', '"+req.body.iduser+"', 'T', '"+req.body.message+"', '"+req.body.date+"', '"+req.body.time+"');";
+    const QUERRY="INSERT INTO `tb_notificaciones` (`ID_Notificaciones`, `ID_Usuario`, `Visto`, `Mensaje`, `Fecha`, `Hora`) VALUES ('"+Math.round(ID_Noti)+"', '"+req.body.iduser+"', 'T', '"+req.body.message+"', '"+req.body.date+"', '"+req.body.time+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         let Message={"Message":"Se ha Enviado la notificacion"}
         if(err){
@@ -66,7 +67,7 @@ router.post(API+'POST/Notif',(req,res)=>{
 //POST CHAT
 router.post(API+'POST/Chat',(req,res)=>{
     const ID_chat=Math.random() * (100000 - 0) + 0;
-    const QUERRY="INSERT INTO `school`.`tb_chat` (`ID_Chat`, `Mensaje`, `Fecha`, `Hora`, `ID_Sala`, `ID_Usuario`) VALUES ('"+Math.round(ID_chat)+"', '"+req.body.message+"', '"+req.body.date+"', '"+req.body.time+"', '"+req.body.sala+"', '"+req.body.user+"');"
+    const QUERRY="INSERT INTO `tb_chat` (`ID_Chat`, `Mensaje`, `Fecha`, `Hora`, `ID_Sala`, `ID_Usuario`) VALUES ('"+Math.round(ID_chat)+"', '"+req.body.message+"', '"+req.body.date+"', '"+req.body.time+"', '"+req.body.sala+"', '"+req.body.user+"');"
     Con.query(QUERRY,(err,row,fielas)=>{
         let Message={"Message":"Se ha enviado el Mensaje"}
         if(err){
@@ -79,7 +80,7 @@ router.post(API+'POST/Chat',(req,res)=>{
 //POST AULAS
 router.post(API+'POST/Aulas',(req,res)=>{
     const ID_Aulas=Math.random() * (100000 - 0) + 0;
-    const QUERRY="INSERT INTO `school`.`tb_aula` (`ID_Aula`, `ID_Sala`, `Nombre_Aula`, `Fecha_Creada`) VALUES ('"+Math.round(ID_Aulas)+"', '"+req.body.idsala+"', '"+req.body.message+"', '"+req.body.fecha+"');";
+    const QUERRY="INSERT INTO `tb_aula` (`ID_Aula`, `ID_Sala`, `Nombre_Aula`, `Fecha_Creada`) VALUES ('"+Math.round(ID_Aulas)+"', '"+req.body.idsala+"', '"+req.body.message+"', '"+req.body.fecha+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         let Message={"Message":"Se ha Creado Aula"}
         if(err){
@@ -93,7 +94,7 @@ router.post(API+'POST/Aulas',(req,res)=>{
 //POST ASISTENCIA
 router.post(API+'POST/Asistencia',(req,res)=>{
     const ID_Asis=Math.random() * (100000 - 0) + 0;
-    let QUERRY="INSERT INTO `school`.`tb_asistencia` (`ID_Asistencia`, `ID_Tipo_Asistencia`, `ID_Usuario`, `ID_Aula`) VALUES ('"+ID_Asis+"', '"+req.body.idtipo+"', '"+req.body.idusuarios+"', '"+req.body.idaula+"');"
+    let QUERRY="INSERT INTO `tb_asistencia` (`ID_Asistencia`, `ID_Tipo_Asistencia`, `ID_Usuario`, `ID_Aula`) VALUES ('"+ID_Asis+"', '"+req.body.idtipo+"', '"+req.body.idusuarios+"', '"+req.body.idaula+"');"
     Con.query(QUERRY,(err,row,fields)=>{
         let Message={"Message":"Se ha Creado Aula"}
         if(err){
