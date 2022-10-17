@@ -102,4 +102,31 @@ router.get(API+'GET/Aulas/:id',(req,res)=>{
         return res.json(row);
     });
 });
+//Asistencia
+router.get(API+'GET/Asistencia',(req,res)=>{
+    let QUERRY="SELECT * FROM tb_asistencia;"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+router.get(API+'GET/Asistencia/:id',(req,res)=>{
+    let QUERRY="SELECT * FROM tb_asistencia where ID_Asistencia="+req.params.id+";"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+//Tipo Asistencia
+router.get(API+'GET/TipoAsistencia',(req,res)=>{
+    let QUERRY="SELECT * FROM tb_tipo_asistencia;"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+router.get(API+'GET/TipoAsistencia/:id',(req,res)=>{
+    let QUERRY="SELECT * FROM tb_tipo_asistencia where ID_Tipo_Asistencia="+req.params.id+";"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+
 module.exports=router;
