@@ -9,4 +9,5 @@ app.use(express.json());
 app.use(require('../Routers/BDGET'));
 app.use(require('../Routers/BDPOST'));
 app.use(require('../Routers/BDPUT'));
+app.use(require('../Routers/BDPUT.DELETE'))
 module.exports=app;
