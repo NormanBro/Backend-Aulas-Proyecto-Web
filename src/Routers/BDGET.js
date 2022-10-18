@@ -128,5 +128,55 @@ router.get(API+'GET/TipoAsistencia/:id',(req,res)=>{
         return res.json(row);
     });
 });
-
+//Examen
+router.get(API+'GET/Examen',(req,res)=>{
+    const QUERRY="SELECT * FROM tb_examen;"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+router.get(API+'GET/Examen/:id',(req,res)=>{
+    const QUERRY="SELECT * FROM tb_examen where ID_Examen='1';";
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+//Preguntas
+router.get(API+'GET/Preguntas',(req,res)=>{
+    const QUERRY="SELECT * FROM tb_preguntas;";
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+router.get(API+'GET/Preguntas/:id',(req,res)=>{
+    const QUERRY="SELECT * FROM tb_preguntas where ID_Pregunta='"+req.params.id+"';"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+router.get(API+'GET/Preguntas/Examen/:id',(req,res)=>{
+    const QUERRY="SELECT * FROM tb_preguntas where ID_Examen='"+req.params.id+"';"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+//Respuesta
+router.get(API+'GET/Respuesta',(req,res)=>{
+    const QUERRY="SELECT * FROM tb_respuesta;";
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+router.get(API+'GET/Respuesta/:id',(req,res)=>{
+    const QUERRY="SELECT * FROM tb_respuesta where ID_Respuesta='"+req.params.id+"';"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
+router.get(API+'GET/Respuesta/Preguntas/:id',(req,res)=>{
+    const QUERRY="SELECT * FROM tb_respuesta where ID_Pregunta='"+req.params.id+"';"
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    });
+});
 module.exports=router;

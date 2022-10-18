@@ -32,4 +32,29 @@ router.put(API+'PUT/Unidad/:id',(req,res)=>{
     });
 });
 
+//Aulas
+router.put(API+'PUT/Aulas/:id',(req,res)=>{
+    let QUERRY="UPDATE `tb_aula` SET `Nombre_Aula` = '"+req.body.name+"' WHERE (`ID_Aula` = '"+req.params.id+"');";
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Cambiado los datos"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+});
+
+//Salas
+router.put(API+'PUT/Salas/:id',(req,res)=>{
+    const QUERRY="UPDATE `tb_sala` SET `Nombre_Sala` = '"+req.body.name+"' WHERE (`ID_Sala` = '"+req.params.id+"');"
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Cambiado los datos"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+    
+});
+
 module.exports=router;
