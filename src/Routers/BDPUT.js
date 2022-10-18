@@ -57,5 +57,40 @@ router.put(API+'PUT/Salas/:id',(req,res)=>{
 
 });
 
+//Examen
+router.put(API+'PUT/Examen',(req,res)=>{
+    const QUERRY="UPDATE `tb_examen` SET `NombreExamen` = '"+req.body.name+"' WHERE (`ID_Examen` = '"+req.body.idexamen+"');";
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Cambiado los datos"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+});
+
+//Preguntas
+router.put(API+'PUT/Preguntas',(req,res)=>{
+    const QUERRY="UPDATE `tb_preguntas` SET `Pregunta` = '"+req.body.name+"' WHERE (`ID_Pregunta` = '"+req.body.idpreguntas+"');";
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Cambiado los datos"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+});
+
+//Respuestas
+router.put(API+'PUT/Respuesta',(req,res)=>{
+    const QUERRY="UPDATE `tb_respuesta` SET `Respuesta` = '"+req.body.resp+"' WHERE (`ID_Respuesta` = '"+req.body.idresp+"');";
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Cambiado los datos"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+});
 
 module.exports=router;
