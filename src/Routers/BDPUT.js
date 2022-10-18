@@ -54,7 +54,8 @@ router.put(API+'PUT/Salas/:id',(req,res)=>{
         }
         return res.json(Menssage);
     });
-    
+
 });
+
 
 module.exports=router;

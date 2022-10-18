@@ -75,6 +75,7 @@ router.get(API+'GET/Salas/:id',(req,res)=>{
         return res.json(row);
     })
 });
+
 // Notificaciones
 router.get(API+'GET/Notif/User/:id',(req,res)=>{
     const QUERRY="select * from tb_notificaciones where ID_Usuario='"+req.params.id+"';"
@@ -82,6 +83,7 @@ router.get(API+'GET/Notif/User/:id',(req,res)=>{
         return res.json(row);
     });
 });
+
 // Chats
 router.get(API+'GET/Chat/Sala/:id',(req,res)=>{
     const QUERRY="select * from tb_notificaciones where ID_Sala='"+req.params.id+"';"
@@ -89,6 +91,7 @@ router.get(API+'GET/Chat/Sala/:id',(req,res)=>{
         return res.json(row);
     })
 });
+
 //Aulas
 router.get(API+'GET/Aulas',(req,res)=>{
     QUERRY="select * from tb_aula;";
@@ -102,6 +105,7 @@ router.get(API+'GET/Aulas/:id',(req,res)=>{
         return res.json(row);
     });
 });
+
 //Asistencia
 router.get(API+'GET/Asistencia',(req,res)=>{
     let QUERRY="SELECT * FROM tb_asistencia;"
@@ -115,6 +119,7 @@ router.get(API+'GET/Asistencia/:id',(req,res)=>{
         return res.json(row);
     });
 });
+
 //Tipo Asistencia
 router.get(API+'GET/TipoAsistencia',(req,res)=>{
     let QUERRY="SELECT * FROM tb_tipo_asistencia;"
@@ -128,6 +133,7 @@ router.get(API+'GET/TipoAsistencia/:id',(req,res)=>{
         return res.json(row);
     });
 });
+
 //Examen
 router.get(API+'GET/Examen',(req,res)=>{
     const QUERRY="SELECT * FROM tb_examen;"
@@ -141,6 +147,7 @@ router.get(API+'GET/Examen/:id',(req,res)=>{
         return res.json(row);
     });
 });
+
 //Preguntas
 router.get(API+'GET/Preguntas',(req,res)=>{
     const QUERRY="SELECT * FROM tb_preguntas;";
@@ -160,6 +167,7 @@ router.get(API+'GET/Preguntas/Examen/:id',(req,res)=>{
         return res.json(row);
     });
 });
+
 //Respuesta
 router.get(API+'GET/Respuesta',(req,res)=>{
     const QUERRY="SELECT * FROM tb_respuesta;";
@@ -179,4 +187,5 @@ router.get(API+'GET/Respuesta/Preguntas/:id',(req,res)=>{
         return res.json(row);
     });
 });
+
 module.exports=router;

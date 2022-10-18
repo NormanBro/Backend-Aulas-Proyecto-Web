@@ -6,6 +6,7 @@ const Con=require('../DataBase/DataBase');
 const {v4:uuid}=require('uuid')
 
 const router=Router();
+
 //POST Usuarios
 router.post(API+'POST/Users',(req,res)=>{
     const IDUser=Math.random() * (100000 - 0) + 0;
@@ -94,7 +95,7 @@ router.post(API+'POST/Aulas',(req,res)=>{
 //POST ASISTENCIA
 router.post(API+'POST/Asistencia',(req,res)=>{
     const ID_Asis=Math.random() * (100000 - 0) + 0;
-    let QUERRY="INSERT INTO `tb_asistencia` (`ID_Asistencia`, `ID_Tipo_Asistencia`, `ID_Usuario`, `ID_Aula`) VALUES ('"+ID_Asis+"', '"+req.body.idtipo+"', '"+req.body.idusuarios+"', '"+req.body.idaula+"');"
+    let QUERRY="INSERT INTO `tb_asistencia` (`ID_Asistencia`, `ID_Tipo_Asistencia`, `ID_Usuario`, `ID_Aula`) VALUES ('"+Math.round(ID_Asis)+"', '"+req.body.idtipo+"', '"+req.body.idusuarios+"', '"+req.body.idaula+"');"
     Con.query(QUERRY,(err,row,fields)=>{
         let Message={"Message":"Se ha Creado Aula"}
         if(err){
@@ -104,4 +105,46 @@ router.post(API+'POST/Asistencia',(req,res)=>{
         return res.json(Message);
     });
 });
+//POST Examen
+router.post(API+'POST/Examen',(req,res)=>{
+    const ID_Examen=Math.random() * (100000 - 0) + 0;
+    //const QUERRY="INSERT INTO `tb_examen` (`ID_Examen`, `NombreExamen`) VALUES ('"+Math.round(ID_Examen)+"', '"+req.body.name+"');";
+    const QUERRY="INSERT INTO `school`.`tb_examen` (`ID_Examen`, `NombreExamen`, `Estado`) VALUES ('"+Math.round(ID_Examen)+"', '"+req.body.name+"', 'activo');"
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Message={"Message":"Se ha Creado Examen"}
+        if(err){
+            Message={"Message":"No se ha Creado Examen"}
+            return res.json(Message);
+        }
+        return res.json(Message);
+    });
+});
+//POST Preguntas
+router.post(API+'POST/Preguntas',(req,res)=>{
+    const ID_Pregunas=Math.random() * (100000 - 0) + 0;
+    const QUERRY="INSERT INTO `tb_preguntas` (`ID_Pregunta`, `Pregunta`, `ID_Examen`) VALUES ('"+Math.round(ID_Pregunas)+"', '"+req.body.name+"', '"+req.body.idexamen+"');"
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Message={"Message":"Se ha Creado Examen"}
+        if(err){
+            Message={"Message":"No se ha Creado Examen"}
+            return res.json(Message);
+        }
+        return res.json(Message);
+    });
+});
+//POST Respuesta
+router.post(API+'POST/Respuesta',(req,res)=>{
+    const ID_Resp=Math.random() * (100000 - 0) + 0;
+    const QUERRY="INSERT INTO `tb_respuesta` (`ID_Respuesta`, `Respuesta`, `ID_Pregunta`) VALUES ('"+Math.round(ID_Resp)+"', '"+req.body.name+"', '"+req.body.idpreg+"');"
+
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Message={"Message":"Se ha Creado Examen"}
+        if(err){
+            Message={"Message":"No se ha Creado Examen"}
+            return res.json(Message);
+        }
+        return res.json(Message);
+    });
+});
+
 module.exports=router;
