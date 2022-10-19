@@ -142,7 +142,7 @@ router.get(API+'GET/Examen',(req,res)=>{
     });
 });
 router.get(API+'GET/Examen/:id',(req,res)=>{
-    const QUERRY="SELECT * FROM tb_examen where ID_Examen='1';";
+    const QUERRY="SELECT * FROM tb_examen where ID_Examen='"+req.params.id+"';";
     Con.query(QUERRY,(err,row,fields)=>{
         return res.json(row);
     });
