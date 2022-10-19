@@ -109,7 +109,7 @@ router.post(API+'POST/Asistencia',(req,res)=>{
 router.post(API+'POST/Examen',(req,res)=>{
     const ID_Examen=Math.random() * (100000 - 0) + 0;
     //const QUERRY="INSERT INTO `tb_examen` (`ID_Examen`, `NombreExamen`) VALUES ('"+Math.round(ID_Examen)+"', '"+req.body.name+"');";
-    const QUERRY="INSERT INTO `school`.`tb_examen` (`ID_Examen`, `NombreExamen`, `Estado`) VALUES ('"+Math.round(ID_Examen)+"', '"+req.body.name+"', 'activo');"
+    const QUERRY="INSERT INTO `tb_examen` (`ID_Examen`, `NombreExamen`, `Estado`,`FechaTerminado`,`FechaEmpiezo`) VALUES ('"+Math.round(ID_Examen)+"', '"+req.body.name+"', 'activo', '"+req.body.fechat+"', '"+req.body.fechae+"');"
     Con.query(QUERRY,(err,row,fields)=>{
         let Message={"Message":"Se ha Creado Examen"}
         if(err){
