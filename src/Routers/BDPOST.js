@@ -27,7 +27,7 @@ router.post(API+'POST/Users',(req,res)=>{
 //POST Unidad
 router.post(API+'POST/Unidad',(req,res)=>{
     const IDUnidad=Math.random() * (100000 - 0) + 0;
-    let QUERRY="INSERT INTO `tb_unidad` (`ID_Unidad`, `Nombre_Unidada`, `ID_Usuarios`) VALUES ('"+IDUnidad+"', '"+req.body.idunidad+"', '"+req.body.iduser+"');"
+    let QUERRY="INSERT INTO `tb_unidad` (`ID_Unidad`, `Nombre_Unidada`, `ID_Usuarios`) VALUES ('"+IDUnidad+"', '"+req.body.name+"', '"+req.body.iduser+"');"
     Con.query(QUERRY,(err,row,field)=>{
         let Message={"Menssage":"Se ha registrado Correctamente"}
         if(err){
