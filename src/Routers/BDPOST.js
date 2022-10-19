@@ -81,7 +81,7 @@ router.post(API+'POST/Chat',(req,res)=>{
 //POST AULAS
 router.post(API+'POST/Aulas',(req,res)=>{
     const ID_Aulas=Math.random() * (100000 - 0) + 0;
-    const QUERRY="INSERT INTO `tb_aula` (`ID_Aula`, `ID_Sala`, `Nombre_Aula`, `Fecha_Creada`) VALUES ('"+Math.round(ID_Aulas)+"', '"+req.body.idsala+"', '"+req.body.message+"', '"+req.body.fecha+"');";
+    const QUERRY="INSERT INTO `tb_aula` (`ID_Aula`, `ID_Sala`, `Nombre_Aula`, `Fecha_Creada`) VALUES ('"+Math.round(ID_Aulas)+"', '"+req.body.idsala+"', '"+req.body.name+"', '"+req.body.fecha+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         let Message={"Message":"Se ha Creado Aula"}
         if(err){
