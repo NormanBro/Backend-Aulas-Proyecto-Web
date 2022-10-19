@@ -97,9 +97,9 @@ router.post(API+'POST/Asistencia',(req,res)=>{
     const ID_Asis=Math.random() * (100000 - 0) + 0;
     let QUERRY="INSERT INTO `tb_asistencia` (`ID_Asistencia`, `ID_Tipo_Asistencia`, `ID_Usuario`, `ID_Aula`,`Fecha`) VALUES ('"+Math.round(ID_Asis)+"', '"+req.body.idtipo+"', '"+req.body.idusuarios+"', '"+req.body.idaula+"', '"+req.body.fecha+"');"
     Con.query(QUERRY,(err,row,fields)=>{
-        let Message={"Message":"Se ha Creado Aula"}
+        let Message={"Message":"Se ha Creado Asistencia"}
         if(err){
-            Message={"Message":"No se ha Creado Aula"}
+            Message={"Message":"No se ha Creado Asistencia"}
             return res.json(Message);
         }
         return res.json(Message);
