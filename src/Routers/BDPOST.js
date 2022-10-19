@@ -138,9 +138,9 @@ router.post(API+'POST/Respuesta',(req,res)=>{
     const QUERRY="INSERT INTO `tb_respuesta` (`ID_Respuesta`, `Respuesta`, `ID_Pregunta`) VALUES ('"+Math.round(ID_Resp)+"', '"+req.body.name+"', '"+req.body.idpreg+"');"
 
     Con.query(QUERRY,(err,row,fields)=>{
-        let Message={"Message":"Se ha Creado Examen"}
+        let Message={"Message":"Se ha Creado Respuesta"}
         if(err){
-            Message={"Message":"No se ha Creado Examen"}
+            Message={"Message":"No se ha Creado Respuesta"}
             return res.json(Message);
         }
         return res.json(Message);
