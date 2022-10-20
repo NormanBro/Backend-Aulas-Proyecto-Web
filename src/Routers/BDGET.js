@@ -188,4 +188,28 @@ router.get(API+'GET/Respuesta/Preguntas/:id',(req,res)=>{
     });
 });
 
+//Tareas
+router.get(API+'GET/Tarea',(req,res)=>{
+    let QUERRY="SELECT * FROM tb_tarea;"
+    Con.query(QUERRY,(err,row,fields)=>{return res.json(row)});
+});
+router.get(API+'GET/Tarea/:id',(req,res)=>{
+    let QUERRY="SELECT * FROM tb_tarea where ID_Tarea='"+req.params.id+"'";
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    })
+});
+
+//Tarea Resp
+router.get(API+'GET/TareaRespo',(req,res)=>{
+    let QUERRY="SELECT * FROM tb_tarea_resp;";
+    Con.query(QUERRY,(err,row,fields)=>{
+        return res.json(row);
+    })
+})
+router.get(API+'GET/TareaRespo/:id',(req,res)=>{
+    let QUERRY="SELECT * FROM tb_tarea_resp where ID_TResp='"+req.params.id+"'"
+    Con.query(QUERRY,(err,row,fields)=>{return res.json(row)});
+    
+})
 module.exports=router;
