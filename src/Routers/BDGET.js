@@ -210,6 +210,5 @@ router.get(API+'GET/TareaRespo',(req,res)=>{
 router.get(API+'GET/TareaRespo/:id',(req,res)=>{
     let QUERRY="SELECT * FROM tb_tarea_resp where ID_TResp='"+req.params.id+"'"
     Con.query(QUERRY,(err,row,fields)=>{return res.json(row)});
-    
 })
 module.exports=router;
