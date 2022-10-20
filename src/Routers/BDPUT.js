@@ -58,8 +58,8 @@ router.put(API+'PUT/Salas/:id',(req,res)=>{
 });
 
 //Examen
-router.put(API+'PUT/Examen',(req,res)=>{
-    const QUERRY="UPDATE `tb_examen` SET `NombreExamen` = '"+req.body.name+"' WHERE (`ID_Examen` = '"+req.body.idexamen+"');";
+router.put(API+'PUT/Examen/:id',(req,res)=>{
+    const QUERRY="UPDATE `tb_examen` SET `NombreExamen` = '"+req.body.name+"' WHERE (`ID_Examen` = '"+req.params.id+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         let Menssage={"Message":"Se ha Cambiado los datos"}
         if(err){
@@ -70,8 +70,8 @@ router.put(API+'PUT/Examen',(req,res)=>{
 });
 
 //Preguntas
-router.put(API+'PUT/Preguntas',(req,res)=>{
-    const QUERRY="UPDATE `tb_preguntas` SET `Pregunta` = '"+req.body.name+"' WHERE (`ID_Pregunta` = '"+req.body.idpreguntas+"');";
+router.put(API+'PUT/Preguntas/:id',(req,res)=>{
+    const QUERRY="UPDATE `tb_preguntas` SET `Pregunta` = '"+req.body.name+"' WHERE (`ID_Pregunta` = '"+req.params.id+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         let Menssage={"Message":"Se ha Cambiado los datos"}
         if(err){
@@ -82,8 +82,8 @@ router.put(API+'PUT/Preguntas',(req,res)=>{
 });
 
 //Respuestas
-router.put(API+'PUT/Respuesta',(req,res)=>{
-    const QUERRY="UPDATE `tb_respuesta` SET `Respuesta` = '"+req.body.resp+"' WHERE (`ID_Respuesta` = '"+req.body.idresp+"');";
+router.put(API+'PUT/Respuesta/:id',(req,res)=>{
+    const QUERRY="UPDATE `tb_respuesta` SET `Respuesta` = '"+req.body.resp+"' WHERE (`ID_Respuesta` = '"+req.params.id+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         let Menssage={"Message":"Se ha Cambiado los datos"}
         if(err){
