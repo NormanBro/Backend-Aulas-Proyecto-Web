@@ -6,8 +6,8 @@ const Con=require('../DataBase/DataBase');
 const router=Router();
 
 //Usuario
-router.put(API+'DELETE/User',(req,res)=>{
-    const QUERRY="UPDATE `tb_usuarios` SET `Estado` = 'desactivo' WHERE (`ID_Usuario` = '"+req.body.iduser+"');";
+router.put(API+'DELETE/User/:id',(req,res)=>{
+    const QUERRY="UPDATE `tb_usuarios` SET `Estado` = 'desactivo' WHERE (`ID_Usuario` = '"+req.params.id+"');";
 
     Con.query(QUERRY,(err,row,fields)=>{
         Con.query(QUERRY,(err,row,fields)=>{
@@ -21,8 +21,8 @@ router.put(API+'DELETE/User',(req,res)=>{
 });
 
 //Examen
-router.put(API+'DELETE/Examen',(req,res)=>{
-    const QUERRY="UPDATE `tb_examen` SET `Estado` = 'desactivo' WHERE (`ID_Examen` = '"+req.body.idexamen+"');";
+router.put(API+'DELETE/Examen/:id',(req,res)=>{
+    const QUERRY="UPDATE `tb_examen` SET `Estado` = 'desactivo' WHERE (`ID_Examen` = '"+req.params.id+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         Con.query(QUERRY,(err,row,fields)=>{
             let Menssage={"Message":"Se ha Eliminado sin problemas"}
@@ -35,8 +35,8 @@ router.put(API+'DELETE/Examen',(req,res)=>{
 });
 
 //Preguntas
-router.delete(API+'DELETE/Preguntas',(req,res)=>{
-    const QUERRY="DELETE FROM `school`.`tb_preguntas` WHERE (`ID_Pregunta` = '"+req.body.idpregunta+"');";
+router.delete(API+'DELETE/Preguntas/:id',(req,res)=>{
+    const QUERRY="DELETE FROM `school`.`tb_preguntas` WHERE (`ID_Pregunta` = '"+req.params.id+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         Con.query(QUERRY,(err,row,fields)=>{
             let Menssage={"Message":"Se ha Eliminado sin problemas"}
@@ -49,8 +49,8 @@ router.delete(API+'DELETE/Preguntas',(req,res)=>{
 });
 
 //Respuesta
-router.delete(API+'DELETE/Respuesta',(req,res)=>{
-    const QUERRY="DELETE FROM `tb_respuesta` WHERE (`ID_Respuesta` = '"+req.body.idresp+"');";
+router.delete(API+'DELETE/Respuesta/:id',(req,res)=>{
+    const QUERRY="DELETE FROM `tb_respuesta` WHERE (`ID_Respuesta` = '"+req.params.id+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         let Menssage={"Message":"Se ha Eliminado sin problemas"}
         if(err){
@@ -62,8 +62,8 @@ router.delete(API+'DELETE/Respuesta',(req,res)=>{
 });
 
 //Notificaciones
-router.delete(API+'DELETE/Notificacion',(req,res)=>{
-    const QUERRY="UPDATE `tb_notificaciones` SET `Visto` = 'f' WHERE (`ID_Notificaciones` = '"+req.body.idnotif+"');";
+router.delete(API+'DELETE/Notificacion/:id',(req,res)=>{
+    const QUERRY="UPDATE `tb_notificaciones` SET `Visto` = 'f' WHERE (`ID_Notificaciones` = '"+req.params.id+"');";
     Con.query(QUERRY,(err,row,fields)=>{
         let Menssage={"Message":"Se ha Eliminado sin problemas"}
         if(err){
