@@ -147,4 +147,33 @@ router.post(API+'POST/Respuesta',(req,res)=>{
     });
 });
 
+//POST Tarea
+router.post(API+'POST/Tarea',(req,res)=>{
+    const ID_Tarea=Math.random() * (100000 - 0) + 0;
+    let QUERRY="INSERT INTO `tb_tarea` (`ID_Tarea`, `Nombre_Tarea`, `Descripcion`, `ID_Unidad`, `Estado`) VALUES ('"+ID_Tarea+"', '"+req.body.name+"', '"+req.body.descripcion+"', '"+req.body.iduni+"', 'Activo');"
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Message={"Message":"Se ha Creado Tarea"}
+        if(err){
+            Message={"Message":"No se ha Creado Tarea"}
+            return res.json(Message);
+        }
+        return res.json(Message);
+    });
+});
+
+//Tarea Respondida
+router.post(API+'POST/Tarearesp',(req,res)=>{
+    const ID_Tarearespo=Math.random() * (100000 - 0) + 0;
+    
+    let QUERRY="INSERT INTO `tb_tarea_resp` (`ID_TResp`, `Archivos`, `ID_Usuario`, `ID_Tarea`) VALUES ('"+ID_Tarearespo+"', '"+req.body.arch+"', '"+req.body.idsuario+"', '"+req.body.idtarea+"');"
+    
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Message={"Message":"Se ha Creado Tarea respondida"}
+        if(err){
+            Message={"Message":"No se ha Creado Tarea reespondida"}
+            return res.json(Message);
+        }
+        return res.json(Message);
+    });
+});
 module.exports=router;
