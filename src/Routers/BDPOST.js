@@ -11,7 +11,7 @@ const router=Router();
 router.post(API+'POST/Users',(req,res)=>{
     const IDUser=Math.random() * (100000 - 0) + 0;
     const Codigo=uuid();
-    const QUERRY="INSERT INTO tb_usuarios (`ID_Usuario`, `Nombre`, `ApellidoP`, `ApellidoM`, `Correo`, `username`, `Contraseña`, `Tema`, `ID_Rol`, `Codigo`, `Estado`) VALUES ('"+Math.round(IDUser)+"', '"+req.body.name+"', '"+req.body.AP+"', '"+req.body.AM+"', '"+req.body.correo+"', '"+req.body.user+"', '"+req.body.pass+"', 'Default', '"+req.body.idrol+"', '"+Math.round(Codigo)+"', 'activo');"
+    const QUERRY="INSERT INTO tb_usuarios (`ID_Usuario`, `Nombre`, `ApellidoP`, `ApellidoM`, `Correo`, `username`, `Contraseña`, `Tema`, `ID_Rol`, `Codigo`, `Estado`) VALUES ('"+Math.round(IDUser)+"', '"+req.body.name+"', '"+req.body.AP+"', '"+req.body.AM+"', '"+req.body.correo+"', '"+req.body.user+"', '"+req.body.pass+"', 'Default', '"+req.body.idrol+"', '"+Codigo+"', 'activo');"
     //const QUERRY="INSERT INTO tb_usuarios (ID_Usuario, Nombre, ApellidoP, ApellidoM, Correo, username, Contraseña, Tema, ID_Rol, Codigo_Tutor) VALUES ('"+Math.round(IDUser)+"', '"+req.body.name+"', '"+req.body.AP+"', '"+req.body.AM+"', '"+req.body.correo+"', '"+req.body.user+"', '"+req.body.pass+"', 'Default', '"+req.body.idrol+"', '"+Codigo+"');"
     
     Con.query(QUERRY,(err,row,field)=>{
