@@ -93,6 +93,27 @@ router.put(API+'PUT/Respuesta/:id',(req,res)=>{
     });
 });
 
+//Tarea
+router.put(API+'PUT/Tarea/:id',(req,res)=>{
+    let QUERRY="UPDATE `tb_tarea` SET `Nombre_Tarea` = '"+req.body.name+"', `Descripcion` = '"+req.body.descripcion+"', `Archivos` = '"+req.body.arch+"' WHERE (`ID_Tarea` = '"+req.params.id+"');"
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Cambiado los datos"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+})
 
+router.put(API+'PUT/Tarearespo/:id',(req,res)=>{
+    let QUERRY="UPDATE `tb_tarea_resp` SET `Archivos` = '"+req.body.arch+"' WHERE (`ID_TResp` = '"+req.params.id+"');"
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Cambiado los datos"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+})
 
 module.exports=router;
