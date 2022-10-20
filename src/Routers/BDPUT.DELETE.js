@@ -76,4 +76,28 @@ router.delete(API+'DELETE/Notificacion/:id',(req,res)=>{
         return res.json(Menssage);
     });
 });
+
+//Tarea
+router.put(API+'DELETE/Tarea/:id',(req,res)=>{
+    let QUERRY="UPDATE `tb_tarea` SET `Estado` = 'desactivo' WHERE (`ID_Tarea` = '"+req.params.id+"');"
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Eliminado sin problemas"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+})
+
+//Tarea Respondida
+router.delete(API+'DELETE/Tarearesp/:id',(req,res)=>{
+    let QUERRY="DELETE FROM `tb_tarea_resp` WHERE (`ID_TResp` = '"+req.params.id+"');";
+    Con.query(QUERRY,(err,row,fields)=>{
+        let Menssage={"Message":"Se ha Eliminado sin problemas"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
+    });
+})
 module.exports=router;
