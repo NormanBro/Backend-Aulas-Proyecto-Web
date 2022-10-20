@@ -37,15 +37,15 @@ router.put(API+'DELETE/Examen/:id',(req,res)=>{
 //Preguntas
 router.delete(API+'DELETE/Preguntas/:id',(req,res)=>{
     const QUERRY="DELETE FROM `tb_preguntas` WHERE (`ID_Pregunta` = '"+req.params.id+"');";
+   
     Con.query(QUERRY,(err,row,fields)=>{
-        Con.query(QUERRY,(err,row,fields)=>{
-            let Menssage={"Message":"Se ha Eliminado sin problemas"}
-            if(err){
-                Menssage={"Message":"Ha ocurrido un error"};
-            }
-            return res.json(Menssage);
-        });
+        let Menssage={"Message":"Se ha Eliminado sin problemas"}
+        if(err){
+            Menssage={"Message":"Ha ocurrido un error"};
+        }
+        return res.json(Menssage);
     });
+    
 });
 
 //Respuesta
